@@ -5,7 +5,8 @@ export default async function pd(req, res){
     
     try{
         const pd = async()=>{
-            await axios.get(`https://cohort.avidia.in/api/quiz/put_score?token=${token}&score=${score}&qd=${qd}`)
+            const r = await axios.get(`https://cohort.avidia.in/api/quiz/put_score?token=${token}&score=${score}&qd=${qd}`);
+            console.log(r, r.data);
         }
         pd()
         res.status(200).json({success: "200 OK"})
