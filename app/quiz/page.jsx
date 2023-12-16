@@ -22,6 +22,7 @@ const QuizPage = () => {
     const difficulty = params.get('difficulty')
     const topic = params.get('topic')
     const numQuestions = Number(params.get('numQuestions'))
+    const token = params.get('token')
 
     const [quiz, setQuiz] = useState([]) // array of questions
     const [isLoading, setIsLoading] = useState(false)
@@ -128,7 +129,7 @@ const QuizPage = () => {
         // if all questions submitted
         if (numSubmitted === numQuestions && numQuestions !== 0) {
             const score = numCorrect / numSubmitted
-            router.push(`/end-screen?score=${score}`)
+            router.push(`/end-screen?score=${score}&token=${token}&qd=${btoa(JSON.stringify(quiz))}`)
         }
     }, [numSubmitted])
 

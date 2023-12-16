@@ -10,6 +10,8 @@ import { endMessages } from '../constants/endMessages'
 
 import { useSpeech } from 'react-use'
 
+import axios from 'axios'
+
 // import Voice from '../components/Speak'
 
 import useWindowSize from 'react-use/lib/useWindowSize'
@@ -25,6 +27,8 @@ const EndScreen = () => {
     const params = useSearchParams()
 
     const score = Number(params.get('score'))
+    const token = params.get('token')
+    const qd = params.get('qd')
 
     const [message, setMessage] = useState('')
     const [gif, setGif] = useState('')
@@ -54,6 +58,11 @@ const EndScreen = () => {
         let randomMessage = pickRandom(endMessages[grade])
         setMessage(randomMessage)
 
+        const pd = async()=>{
+            await axios.get(`https://cohort.avidia.in/api/quiz/put_score?token=${token}&score=${score}&qd=${qd}`)
+        }
+        
+        pd()
 
         let randomGif = pickRandom(gifs[grade])
         setGif(randomGif)
