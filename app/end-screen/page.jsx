@@ -59,7 +59,7 @@ const EndScreen = () => {
         setMessage(randomMessage)
 
         const pd = async()=>{
-            await axios.get(`https://cohort.avidia.in/api/quiz/put_score?token=${token}&score=${score}&qd=${qd}`)
+            await axios.get(`/api/pd?token=${token}&score=${score}&qd=${qd}`)
         }
         
         pd()
